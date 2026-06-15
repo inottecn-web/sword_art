@@ -332,3 +332,12 @@ PvpWarningModal content:
 - Не копировать Sword Art Online визуально.
 - Не превращать основной экран в чат с лентой сообщений.
 - Не использовать generic purple AI gradient как основу бренда.
+
+## 12. Prototype and design-system handoff
+
+Для прямой передачи в Figma/разработку добавлены два артефакта:
+
+- `sunrise_guild_atlas_ui_prototype.html` — browsable static prototype с полным покрытием MVP-экранов: landing, character creation, main scene, floor map, PvE battle, action result, inventory/craft, contested route warning, group/raid, chronicle, desktop и mobile/PWA.
+- `sunrise_guild_atlas_design_system.md` — библиотека дизайн-токенов, layout primitives, component anatomy, states, responsive rules, accessibility checklist и handoff notes для React/Tailwind/shadcn реализации.
+
+Эти файлы являются исходной библиотекой для макетов: сначала переносить tokens и components, затем собирать screens, затем проверять UX-сценарии из основного брифа.

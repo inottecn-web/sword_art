@@ -144,6 +144,33 @@
     .mobile-tabs { display:grid; grid-template-columns: repeat(5,1fr); background: #fff4cf; border-top:1px solid var(--line); }
     .mobile-tabs span { padding: 10px 4px; text-align:center; font-size: 12px; font-weight: 800; }
 
+
+
+    .coverage-section { margin-top: 28px; display: grid; gap: 18px; }
+    .section-title { display:flex; align-items:end; justify-content:space-between; gap:16px; margin: 8px 0; }
+    .section-title p { margin: 0; max-width: 760px; color: var(--forest); }
+    .screen-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .wide-card, .library-card { border:1px solid rgba(255,248,223,.58); background: linear-gradient(145deg, rgba(255,248,223,.86), rgba(243,231,201,.72)); border-radius: 24px; padding: 18px; box-shadow: 0 18px 45px rgba(18,59,42,.16); }
+    .wide-card.full { grid-column: 1 / -1; }
+    .subgrid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 14px; }
+    .token { border-radius: 16px; padding: 12px; color: #fff8df; min-height: 76px; display:flex; flex-direction:column; justify-content:space-between; font-weight: 850; }
+    .token small { opacity:.88; font-weight:700; }
+    .wire { border:1px dashed rgba(18,59,42,.28); border-radius: 18px; padding: 12px; background: rgba(255,255,255,.28); }
+    .wire-row { display:flex; gap: 8px; align-items:center; justify-content:space-between; padding: 9px 0; border-bottom:1px solid var(--line); }
+    .wire-row:last-child { border-bottom:0; }
+    .bar { height: 10px; border-radius: 99px; background: rgba(18,59,42,.12); overflow:hidden; }
+    .bar > span { display:block; height:100%; background: linear-gradient(90deg, var(--gold), var(--verdigris)); }
+    .initiative { display:flex; gap: 8px; flex-wrap:wrap; margin: 12px 0; }
+    .turn { border-radius: 14px; padding: 10px; background: rgba(18,59,42,.08); border:1px solid var(--line); min-width: 92px; text-align:center; font-weight:850; }
+    .turn.active { background: var(--forest); color: var(--paper); }
+    .inventory-grid { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+    .item { border-radius: 16px; padding: 12px; min-height: 86px; background: rgba(255,255,255,.42); border:1px solid var(--line); }
+    .component-library { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .state-row { display:flex; flex-wrap:wrap; gap: 8px; margin-top: 12px; }
+    .modal-demo { border:2px solid var(--contested); border-radius: 24px; padding: 18px; background: linear-gradient(145deg, #fff5d8, #f5d4a8); box-shadow: inset 0 0 0 5px rgba(217,130,43,.10); }
+    .checklist { columns: 2; padding-left: 18px; }
+    .checklist li { break-inside: avoid; margin: 0 0 8px; }
+
     @media (max-width: 1100px) {
       .desktop-grid { grid-template-columns: 1fr; }
       .content-stack, .screen-strip { grid-template-columns: 1fr 1fr; }
@@ -152,10 +179,12 @@
     @media (max-width: 680px) {
       .app-shell { width: calc(100vw - 16px); margin: 8px auto 80px; }
       .topbar { border-radius: 20px; align-items:flex-start; flex-direction:column; }
-      .content-stack, .screen-strip { grid-template-columns: 1fr; }
+      .content-stack, .screen-strip, .screen-grid, .component-library { grid-template-columns: 1fr; }
       .guild-belt { position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 10; grid-template-columns: repeat(5, 1fr); font-size: 12px; }
       .nav-item:nth-child(6) { display:none; }
       .phone { width: min(390px, 100%); }
+      .subgrid, .inventory-grid { grid-template-columns: 1fr 1fr; }
+      .checklist { columns: 1; }
     }
   </style>
 </head>
@@ -234,6 +263,39 @@
     <section class="mobile-preview" aria-label="Mobile PWA preview">
       <div class="phone"><div class="phone-screen"><div class="mobile-top"><strong>Floor 1</strong><span>Safe</span></div><div class="mobile-scene">Рассветный Порог</div><div class="mobile-body"><span class="badge safe">🛡 Безопасная зона</span><div class="narrative"><strong>Narrative collapsed</strong><br/>Колокольчик лавки звенит...</div><div class="system-result"><strong>System Result</strong><br/>Доступно 5 действий · PvP нет</div><div class="button gold">Собрать рассветник</div><div class="button outline">Открыть Action Deck</div></div><div class="mobile-tabs"><span>Сцена</span><span>Действия</span><span>Карта</span><span>Герой</span><span>Соц.</span></div></div></div>
     </section>
+
+
+    <section class="coverage-section" aria-label="Full brief coverage screens">
+      <div class="section-title">
+        <div><h1>100% coverage screens</h1><p>Эта секция переводит каждый пункт брифа в отдельный экран или экранный фрагмент: landing, создание персонажа, карта, бой, результат действия, инвентарь/крафт, PvP-warning, группа/рейд и хроника.</p></div>
+        <span class="chip gold">Figma handoff ready</span>
+      </div>
+      <div class="screen-grid">
+        <article class="wide-card" id="landing-screen"><h2>1. Landing / вход</h2><div class="wire"><h1>Покори башню вместе с сервером</h1><p>Текстово-графическая MMO-RPG без свободного ввода: выбирай действия, а сервер считает последствия.</p><div class="state-row"><div class="button gold">Создать персонажа</div><div class="button outline">Продолжить игру</div></div><div class="wire-row"><span>Открыт этаж</span><strong>1</strong></div><div class="wire-row"><span>Подготовка к первому боссу</span><strong>17%</strong></div></div></article>
+        <article class="wide-card" id="character-creation"><h2>2. Создание персонажа</h2><div class="subgrid"><div class="class-card">⚔ <strong>Мечник</strong><br/>урон · средняя сложность · ветки дуэлянта</div><div class="class-card">🛡 <strong>Страж</strong><br/>защита · лидерство · караваны</div><div class="class-card">🧭 <strong>Разведчик</strong><br/>маршруты · ловушки · сбор</div><div class="class-card">🏹 <strong>Лучник</strong><br/>контроль · безопасная дистанция</div><div class="class-card">🔮 <strong>Маг</strong><br/>контроль · стихии · знания</div><div class="class-card">✨ <strong>Целитель</strong><br/>поддержка · зелья · группы</div><div class="class-card">🔨 <strong>Ремесленник</strong><br/>крафт · экономика · ремонт</div></div><p class="chip">CTA заблокирован, пока не выбраны имя и класс.</p></article>
+        <article class="wide-card full" id="floor-map"><h2>3. Карта первого этажа</h2><div class="subgrid"><div class="wire"><h3>Фильтры</h3><div class="state-row"><span class="chip">ресурсы</span><span class="chip">PvP-риск</span><span class="chip">квесты</span><span class="chip">группа</span><span class="chip">торговля</span><span class="chip">угрозы</span></div></div><div class="wire"><h3>ZoneCard</h3><div class="wire-row"><span>Светлая Опушка</span><span class="badge safe">Safe</span></div><div class="wire-row"><span>Рассветник</span><strong>обычный</strong></div><div class="wire-row"><span>Игроки рядом</span><strong>8</strong></div></div><div class="wire"><h3>Contested route</h3><div class="wire-row"><span>Тропа Рассветника</span><span class="badge contested">⚠ PvP</span></div><div class="wire-row"><span>Выгода</span><strong>×2 ресурс</strong></div><div class="wire-row"><span>Нужен warning</span><strong>да</strong></div></div></div></article>
+        <article class="wide-card" id="pve-battle"><h2>4. PvE-сцена / бой</h2><div class="initiative"><div class="turn active">Вы</div><div class="turn">Кабан</div><div class="turn">Страж</div><div class="turn">Целитель</div></div><div class="dice-panel"><div><strong>Атака мечом</strong><br/>3d6 + Мастерство 2 против DC 14</div><div style="display:flex;gap:8px"><span class="dice">6</span><span class="dice">3</span><span class="dice">4</span></div><strong>15 · успех</strong></div><div class="system-result"><strong>Combat log</strong><br/>Урон 7 · Прочность меча -1 · Агро +2</div></article>
+        <article class="wide-card" id="action-result"><h2>5. Экран результата действия</h2><div class="wire-row"><span>Выбрано</span><strong>Собрать рассветник</strong></div><div class="dice-panel"><span>4 + 5 + 3 + навык 2</span><strong>14 / DC 12</strong></div><div class="system-result"><strong>SystemResult</strong><br/>Получено: рассветник ×2 · Прогресс рецепта +1 · Репутация города +0</div><div class="narrative"><strong>NarrativeBlock</strong><br/>Листья мягко светятся, когда вы срезаете стебли у кромки поля.</div></article>
+        <article class="wide-card" id="inventory-craft"><h2>6. Инвентарь и крафт</h2><div class="inventory-grid"><div class="item">🌿 Рассветник<br/><strong>×3</strong></div><div class="item">🧪 Флакон<br/><strong>×1</strong></div><div class="item">⚔ Меч<br/>durability 18/20</div><div class="item">🛡 Куртка<br/>compare +2 def</div></div><div class="recipe"><strong>CraftRecipeCard: простое зелье лечения</strong><br/>Стоимость: рассветник ×2 + флакон ×1 · Результат: HP +20 · Проверка: нет</div></article>
+        <article class="wide-card" id="group-raid"><h2>7. Группа / рейд</h2><div class="party-member"><span>Лидер · Страж</span><strong>ready</strong></div><div class="party-member"><span>Вы · Мечник</span><strong>selecting</strong></div><div class="party-member"><span>Целитель</span><strong>online</strong></div><div class="wire"><div class="wire-row"><span>Общая цель</span><strong>Сопроводить караван</strong></div><div class="wire-row"><span>Vote timer</span><strong>00:18</strong></div></div></article>
+        <article class="wide-card" id="chronicle"><h2>8. Хроника сервера</h2><div class="bar"><span style="width:17%"></span></div><p><strong>Подготовка к первому боссу: 17%</strong></p><div class="chronicle-entry"><span>First gather: Светлая Опушка очищена</span><strong>сервер</strong></div><div class="chronicle-entry"><span>Вы открыли рецепт зелья</span><strong>личное</strong></div><div class="chronicle-entry"><span>Гильдия внесла 40 трав</span><strong>гильдия</strong></div></article>
+        <article class="wide-card full" id="pvp-warning"><h2>9. Спорный ресурсный маршрут</h2><div class="modal-demo"><h1>⚠ Спорная зона: Тропа Рассветника</h1><div class="subgrid"><div><h3>Можно потерять</h3><p>до 30% ресурсов, собранных после входа в зону.</p></div><div><h3>Нельзя потерять</h3><p>стартовую экипировку, привязанные предметы и валюту новичка.</p></div><div><h3>Защита новичка</h3><p>первые 3 входа показывают safe alternative и требуют повторного подтверждения.</p></div></div><p><strong>Выгода:</strong> больше рассветника и шанс редкого корня. <strong>Рядом:</strong> 5 игроков, 1 неизвестная группа.</p><div class="state-row"><div class="button gold">Подтвердить вход</div><div class="button outline">Пойти безопасной тропой</div></div></div></article>
+      </div>
+    </section>
+
+    <section class="coverage-section" aria-label="Design system and element library">
+      <div class="section-title"><div><h1>Design system & element library</h1><p>Библиотека элементов покрывает компоненты из брифа и даёт им состояния для реализации на React/Tailwind/shadcn.</p></div><span class="chip">No free input</span></div>
+      <article class="wide-card full"><h2>Design tokens</h2><div class="subgrid"><div class="token" style="background:var(--forest)">Deep Forest<small>#123B2A · primary/system</small></div><div class="token" style="background:var(--gold);color:#3c2a04">Dawn Gold<small>#F2B84B · CTA/progress</small></div><div class="token" style="background:var(--safe);color:#123b2a">Meadow Safe<small>#7CBF6A · safe risk</small></div><div class="token" style="background:var(--contested)">Amber Contested<small>#D9822B · PvP warning</small></div><div class="token" style="background:var(--danger)">Oath Red<small>#8F2D2D · danger/loss</small></div><div class="token" style="background:var(--lilac)">Arcane Lilac<small>#A78BFA · narrative only</small></div></div></article>
+      <div class="component-library">
+        <article class="library-card"><h2>ActionCard states</h2><div class="state-row"><span class="badge safe">available</span><span class="badge">recommended</span><span class="badge contested">contested</span><span class="badge danger">dangerous</span><span class="chip">cooldown</span><span class="chip">requires item</span><span class="chip">party vote</span></div></article>
+        <article class="library-card"><h2>Result components</h2><p><strong>DiceResultPanel</strong>: dice, modifiers, DC, margin. <br/><strong>SystemResultBlock</strong>: facts. <br/><strong>NarrativeBlock</strong>: atmosphere.</p></article>
+        <article class="library-card"><h2>Economy</h2><p>ResourceChip, InventoryItemCard, CraftRecipeCard, TradeOrderRow, durability, exact missing quantities, route risk.</p></article>
+        <article class="library-card"><h2>Social/MMO</h2><p>PartyPanel, PresenceIndicator, ChronicleEntry, BossProgressMeter, ReputationStatusBadge, readiness and reconnect states.</p></article>
+        <article class="library-card"><h2>Dialogs/sheets</h2><p>PvpWarningModal, ConfirmActionDialog, mobile ActionDeck sheet, filters sheet and full-height PvP confirmation.</p></article>
+        <article class="library-card"><h2>Accessibility</h2><ul class="checklist"><li>risk = color + icon + text</li><li>44px mobile targets</li><li>keyboard navigation</li><li>reduced motion</li><li>explicit empty/loading/reconnect</li><li>tabular numerals</li></ul></article>
+      </div>
+    </section>
+
   </main>
 </body>
 </html>
