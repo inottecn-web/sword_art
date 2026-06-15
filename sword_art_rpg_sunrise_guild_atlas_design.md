@@ -1,6 +1,6 @@
 # Sword Art RPG — дизайн-концепт «Sunrise Guild Atlas»
 
-Документ фиксирует конкретное UI/UX-направление для макетов DesignerGPT/Figma на основе `sword_art_rpg_designergpt_uiux_brief.md` и подхода установленного `frontend-design` skill: смелая, запоминающаяся, production-grade эстетика без generic AI UI.
+Документ фиксирует конкретное UI/UX-направление для макетов и прототипа, создаваемых мной с использованием `frontend-design` skill из GitHub-репозитория `anthropics/claude-code`, на основе `sword_art_rpg_designergpt_uiux_brief.md`: смелая, запоминающаяся, production-grade эстетика без generic AI UI.
 
 ## 1. UX summary
 
